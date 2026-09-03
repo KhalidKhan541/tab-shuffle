@@ -1,0 +1,1 @@
+chrome.runtime.onMessage.addListener((msg, s, resp) => { if(msg.action === 'shuffle') { chrome.tabs.query({}, tabs => { for(let i = tabs.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); chrome.tabs.move(tabs[i].id, {index: tabs[j].index}); } resp({success: true}); }); return true; } });
